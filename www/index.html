@@ -18,38 +18,59 @@
     under the License.
 -->
 <html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
-        <title>Webelexis Photo</title>
-    </head>
-    <body>
-        <div class="app">
-            <header class="bar bar-nav">
-                <a class="icon icon-left-nav pull-left"></a>
-                <a class="icon icon-compose pull-right"></a>
-                <h1 class="title">Webelexis-Photo</h1>
-            </header>
-            <div id="deviceready" class="content">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <button class="btn btn-primary" id="aquire" style="height:100px;width:200px">Yes</button>
+<head>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
+    <title>Webelexis Photo</title>
+</head>
+<body>
+<header class="bar bar-nav">
+    <!-- a class="icon icon-left-nav pull-left"></a -->
+    <a href="#settings" class="icon icon-bars pull-right"></a>
+    <h1 class="title">Webelexis-Photo</h1>
+</header>
+<div class="content">
+    <div class="app">
+        <p>Connected</p>
+        <button class="btn btn-primary btn-block" id="aquire">
+            <span class="icon icon-check"></span>
+            Photo aufnehmen
+        </button>
+    </div>
+    <div id="settings" class="modal">
+        <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#settings"></a>
+            <h1 class="title">Verbindung zu Elexis</h1>
+        </header>
+
+        <div class="content">
+            <form>
+                <input type="text" placeholder="Adresse">
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Passwort">
+                <button class="btn btn-block btn-primary">Übernehmen</button>
+            </form>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+    </div>
+
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/ratchet.min.js"></script>
+</body>
 </html>
