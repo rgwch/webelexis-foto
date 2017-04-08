@@ -2,9 +2,9 @@
 <widget id="ch.webelexis.foto" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>WebelexisFoto</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An App to import Fotos into a Webelexis/Elexis System
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="weirich@webelexis.ch" href="http://www.webelexis.ch">
         Apache Cordova Team
     </author>
     <content src="index.html" />
