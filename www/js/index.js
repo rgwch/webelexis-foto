@@ -17,8 +17,11 @@
  * under the License.
  */
 var app = {
+  usernameField: "ch.webelexis.foto.username",
+  passwordField: "ch.webelexis.foto.password",
+  urlField:"ch.webelexis.foto.url",
 
-  // Application Constructor
+// Application Constructor
   initialize: function () {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
   },
@@ -29,33 +32,41 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function () {
     this.receivedEvent('deviceready');
-    $('#aquire').click(function(){
-      alert("clicked")
-      navigator.camera.getPicture(function(succ){
-        alert(succ)
-      },function(err){
+    $('#aquire').click(function () {
+      navigator.camera.getPicture(app.saveData, function (err) {
         alert(err)
       })
     })
-    $(document).on("pagebeforeshow","#einstellungen",function(){
-      var surl=localStorage.getItem("ch.webelexis.foto.url")
-      if(surl=='null' || surl==null){
-        surl="pa"
+    $(document).on("pagebeforeshow", "#einstellungen", function () {
+      alert(app.urlField)
+      var surl = localStorage.getItem(app.urlField)
+      alert(surl)
+      if (surl == 'null' || surl == null) {
+        surl = "pa"
       }
       $('#server_url').val(surl)
-      $("#server_user").val(localStorage.getItem("ch.webelexis.foto.username"))
-      $("#server_pwd").val(localStorage.getItem("ch.webelexis.foto.password"))
+
+      $("#server_user").val(localStorage.getItem(app.usernameField))
+      $("#server_pwd").val(localStorage.getItem(app.passwordField))
     });
-    $('#saveValues').click(function(){
-      var surl=$("#server_url").val()
-      localStorage.setItem("ch.webelexis.foto.url",surl)
-      localStorage.setItem("ch.webelexis.foto.username",$("#server_user").val())
-      localStorage.setItem("ch.webelexis.foto.password",$("#server_pwd").val())
+    $('#saveValues').click(function () {
+      var surl = $("#server_url").val()
+      localStorage.setItem(app.urlField, surl)
+      localStorage.setItem(app.usernameField, $("#server_user").val())
+      localStorage.setItem(app.passwordField, $("#server_pwd").val())
     })
   },
 
-  save: function(data){
-    alert(data)
+  saveData: function (data) {
+    var url = localStorage.getItem(app.urlField)
+    var uname=localStorage.getItem(app.usernameField)
+    var pwd=localStorage.getItem(app.passwordField)
+    $.post(url,{user:uname,pwd:pwd,payload:data},function(result,statusText,xp){
+      alert(statusText)
+      if(result['status']!= 'ok'){
+        alert("Fehler bei der Verbindung")
+      }
+    },"application/json")
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
