@@ -17,28 +17,52 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-        document.getElementById('aquire').addEventListener('click',function(){
-            alert("Klick!")
-        })
-    },
+  // Application Constructor
+  initialize: function () {
+    document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+  },
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        console.log('Received Event: ' + id);
-    }
+  // deviceready Event Handler
+  //
+  // Bind any cordova events here. Common events are:
+  // 'pause', 'resume', etc.
+  onDeviceReady: function () {
+    this.receivedEvent('deviceready');
+    $('#aquire').click(function(){
+      alert("clicked")
+      navigator.camera.getPicture(function(succ){
+        alert(succ)
+      },function(err){
+        alert(err)
+      })
+    })
+    $(document).on("pagebeforeshow","#einstellungen",function(){
+      var surl=localStorage.getItem("ch.webelexis.foto.url")
+      if(surl=='null' || surl==null){
+        surl="pa"
+      }
+      $('#server_url').val(surl)
+      $("#server_user").val(localStorage.getItem("ch.webelexis.foto.username"))
+      $("#server_pwd").val(localStorage.getItem("ch.webelexis.foto.password"))
+    });
+    $('#saveValues').click(function(){
+      var surl=$("#server_url").val()
+      localStorage.setItem("ch.webelexis.foto.url",surl)
+      localStorage.setItem("ch.webelexis.foto.username",$("#server_user").val())
+      localStorage.setItem("ch.webelexis.foto.password",$("#server_pwd").val())
+    })
+  },
 
+  save: function(data){
+    alert(data)
+  },
+  // Update DOM on a Received Event
+  receivedEvent: function (id) {
+    var parentElement = document.getElementById(id);
+    console.log('Received Event: ' + id);
+  },
 };
+
 
 app.initialize();

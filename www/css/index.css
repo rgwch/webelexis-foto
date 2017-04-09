@@ -46,6 +46,7 @@ body {
 }
 
 .app{
+    /*
     background:url(../img/webelexis.png) no-repeat center top;
 
     position:absolute;
@@ -54,7 +55,7 @@ body {
     height:60%;
     width:80%;
     text-align:center;
-    padding:200px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    padding:200px 0px 0px 0px;  */   /* image height is 200px (bottom 20px are overlapped with text) */
     /*margin:-50% 0px 0px -50%;*/  /* offset vertical: half of image height and text area height */
 
 }
