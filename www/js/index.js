@@ -1,46 +1,31 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ (c) 2017 by G. Weirich
+ Portions based on the Cordova sample (c) by Apache foundation
  */
+
 var app = {
+  // We store url and credentials in the mobile phone's localStorage.
   usernameField: "ch.webelexis.foto.username",
   passwordField: "ch.webelexis.foto.password",
   urlField: "ch.webelexis.foto.url",
 
-// Application Constructor
+// Initilize our app when the device is ready
   initialize: function () {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
   },
 
-  // deviceready Event Handler
-  //
-  // Bind any cordova events here. Common events are:
-  // 'pause', 'resume', etc.
+  // Here, the device is ready
   onDeviceReady: function () {
     this.receivedEvent('deviceready');
+
+    // bind the camera to the "Photo aufnehmen" button. We aquire the picture as BASE64
     $('#aquire').click(function () {
-      navigator.camera.getPicture(app.saveData, function (err) {
-        alert(err)
-      })
+      navigator.camera.getPicture(app.saveData, app.cameraFail, {destinationType: Camera.DestinationType.DATA_URL})
     })
+
+    // When the user clicks on "Settings" prefill the input fields with data from localStorage
     $(document).on("pagebeforeshow", "#einstellungen", function () {
-      alert(app.urlField)
       var surl = localStorage.getItem(app.urlField)
-      alert(surl)
       if (surl == 'null' || surl == null) {
         surl = "pa"
       }
@@ -49,14 +34,17 @@ var app = {
       $("#server_user").val(localStorage.getItem(app.usernameField))
       $("#server_pwd").val(localStorage.getItem(app.passwordField))
     });
+
+    // When zhe user clicks on "Übernehmen" on the settings screen, transmit values to localStorage
     $('#saveValues').click(function () {
       var surl = $("#server_url").val()
       localStorage.setItem(app.urlField, surl)
       localStorage.setItem(app.usernameField, $("#server_user").val())
       localStorage.setItem(app.passwordField, $("#server_pwd").val())
     })
-  },
+  },  // end onDeviceReady
 
+  // After camera is finished, POST the picture to the server's REST interface
   saveData: function (data) {
     var url = localStorage.getItem(app.urlField)
     var uname = localStorage.getItem(app.usernameField)
@@ -64,26 +52,23 @@ var app = {
     $.ajax({
       type: "POST",
       url: url,
-      datyType: "json",
+      dataType: "json",
       async: false,
-      data: "{user:uname,pwd:pwd,payload:data}",
+      data: {user: uname, pwd: pwd, payload: data},
       success: function (val) {
         alert("success")
       },
       error: function (err) {
-        alert("Error: "+JSON.stringify(err))
+        alert("Error: " + JSON.stringify(err))
       }
     })
   },
-  /*
-   $.post(url,{user:uname,pwd:pwd,payload:data},function(result,statusText,xp){
-   alert(statusText)
-   if(result['status']!= 'ok'){
-   alert("Fehler bei der Verbindung")
-   }
-   },"application/json")
 
-   }, */
+  // If camera fails, display reason
+  cameraFail: function (err) {
+    alert("Fehler bei Kamera: " + err)
+  },
+
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     var parentElement = document.getElementById(id);

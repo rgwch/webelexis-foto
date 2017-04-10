@@ -2,85 +2,80 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
-    <meta name="format-detection" content="telephone=no">
-    <meta charset="utf-8">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
-    <style>
-        /* For avoiding title truncation in wp8 */
-        .ui-header .ui-title {
-            overflow: visible !important;
-        }
+  <meta name="format-detection" content="telephone=no">
+  <meta charset="utf-8">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+  <style>
+    /* For avoiding title truncation in wp8 */
+    .ui-header .ui-title {
+      overflow: visible !important;
+    }
 
-        /* For fixing the absolute position issue for the default cordova gen page*/
-        #cjp-accordion1 .app {
-            left: 5px !important;
-            margin: 5px !important;
-            position: relative !important;
-        }
-    </style>
-    <title>Webelexis Photo</title>
+    /* For fixing the absolute position issue for the default cordova gen page*/
+    #cjp-accordion1 .app {
+      left: 5px !important;
+      margin: 5px !important;
+      position: relative !important;
+    }
+  </style>
+  <title>Webelexis Photo</title>
 </head>
 <body>
 
+<!-- main page -->
 <div data-role="page" id="hauptseite">
-    <div data-role="header" data-iconpos="right">
-        <h1>Webelexis-Photo</h1>
-        <a href="#einstellungen" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-btn-right">No
-            Text</a>
-    </div>
-    <div role="main" class="ui-content">
-        <p>Connected</p>
-        <img src="img/webelexis.png" style="display:block;margin-left:auto;margin-right: auto;">
-        <button class="ui-btn ui-icon-camera ui-btn-icon-left" id="aquire">
-            Photo aufnehmen
-        </button>
+  <div data-role="header" data-iconpos="right">
+    <h1>Webelexis-Foto</h1>
+    <a href="#einstellungen" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-btn-right">No
+      Text</a>
+  </div>
+  <div role="main" class="ui-content">
+    <img src="img/webelexis.png" style="display:block;margin-left:auto;margin-right: auto;">
+    <button class="ui-btn ui-icon-camera ui-btn-icon-left" id="aquire">
+      Bild aufnehmen
+    </button>
 
-    </div>
+  </div>
 
-    <div data-role="footer" data-position="fixed">
-        <h4>Page 1 Footer</h4>
-    </div>
-    <!-- end page 1 footer -->
+  <div data-role="footer" data-position="fixed">
+    <h4>Ein Webelexis-Addon</h4>
+  </div>
 </div>
-<!-- end page 1 -->
+<!-- end main page -->
 
-<!-- jquery mobile page 2 -->
+<!-- Settings page -->
 <div data-role="page" id="einstellungen">
-    <div data-role="header">
-        <h1>Page 2</h1>
-    </div>
+  <div data-role="header">
+    <h1>Einstellungen</h1>
+  </div>
 
-    <div role="main" class="ui-content">
-        <h1>Einstellungen</h1>
-        <input type="text" placeholder="URL" id="server_url">
-        <input type="text" placeholder="Username" id="server_user">
-        <input type="password" placeholder="Passwort" id="server_pwd">
-        <button class="ui-btn" id="saveValues">Übernehmen</button>
-        <a href="#hauptseite">Zurück</a>
-    </div>
-    <!-- end of page 2 content -->
+  <div role="main" class="ui-content">
+    <p>Bitte geben Sie die Verbindungsdaten für den Webelexis-Server ein</p>
+    <input type="text" placeholder="URL" id="server_url">
+    <input type="text" placeholder="Username" id="server_user">
+    <input type="password" placeholder="Passwort" id="server_pwd">
+    <button class="ui-btn" id="saveValues">Übernehmen</button>
+    <a href="#hauptseite">Zurück</a>
+  </div>
 
-    <div data-role="footer" data-position="fixed">
-        <h4>Page 2 Footer</h4>
-    </div>
-    <!-- end page 2 footer -->
+  <div data-role="footer" data-position="fixed">
+    <h4>Ein Webelexis-Addon</h4>
+  </div>
 </div>
-<!-- end page 2 -->
+<!-- end settings page -->
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
 <script type="text/javascript" id="jqm-trans-disable">
-    /* For having a faster transition */
-    $(document).on("mobileinit", function () {
-      $.mobile.defaultPageTransition = "none";
-      $.mobile.defaultDialogTransition = "none";
-    });
+  /* For having a faster transition */
+  $(document).on("mobileinit", function () {
+    $.mobile.defaultPageTransition = "none";
+    $.mobile.defaultDialogTransition = "none";
+  });
 </script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
