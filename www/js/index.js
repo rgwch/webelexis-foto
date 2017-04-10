@@ -19,7 +19,7 @@
 var app = {
   usernameField: "ch.webelexis.foto.username",
   passwordField: "ch.webelexis.foto.password",
-  urlField:"ch.webelexis.foto.url",
+  urlField: "ch.webelexis.foto.url",
 
 // Application Constructor
   initialize: function () {
@@ -59,20 +59,36 @@ var app = {
 
   saveData: function (data) {
     var url = localStorage.getItem(app.urlField)
-    var uname=localStorage.getItem(app.usernameField)
-    var pwd=localStorage.getItem(app.passwordField)
-    $.post(url,{user:uname,pwd:pwd,payload:data},function(result,statusText,xp){
-      alert(statusText)
-      if(result['status']!= 'ok'){
-        alert("Fehler bei der Verbindung")
+    var uname = localStorage.getItem(app.usernameField)
+    var pwd = localStorage.getItem(app.passwordField)
+    $.ajax({
+      type: "POST",
+      url: url,
+      datyType: "json",
+      async: false,
+      data: "{user:uname,pwd:pwd,payload:data}",
+      success: function (val) {
+        alert("success")
+      },
+      error: function (err) {
+        alert("Error: "+JSON.stringify(err))
       }
-    },"application/json")
+    })
   },
+  /*
+   $.post(url,{user:uname,pwd:pwd,payload:data},function(result,statusText,xp){
+   alert(statusText)
+   if(result['status']!= 'ok'){
+   alert("Fehler bei der Verbindung")
+   }
+   },"application/json")
+
+   }, */
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     var parentElement = document.getElementById(id);
     console.log('Received Event: ' + id);
-  },
+  }
 };
 
 
