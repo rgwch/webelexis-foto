@@ -33,10 +33,9 @@ var app = {
   onDeviceReady: function () {
     this.receivedEvent('deviceready');
     $('#aquire').click(function () {
-      navigator.camera.getPicture(app.saveData, function (err) {
-        alert(err)
-      })
+      navigator.camera.getPicture(app.saveData, app.cameraFail, {destinationType: Camera.DestinationType.DATA_URL})
     })
+
     $(document).on("pagebeforeshow", "#einstellungen", function () {
       var surl = localStorage.getItem(app.urlField)
       if (surl == 'null' || surl == null) {
@@ -64,24 +63,18 @@ var app = {
       url: url,
       dataType: "json",
       async: false,
-      data: {user:uname,pwd:pwd,payload:data},
+      data: {user: uname, pwd: pwd, payload: data},
       success: function (val) {
         alert("success")
       },
       error: function (err) {
-        alert("Error: "+JSON.stringify(err))
+        alert("Error: " + JSON.stringify(err))
       }
     })
   },
-  /*
-   $.post(url,{user:uname,pwd:pwd,payload:data},function(result,statusText,xp){
-   alert(statusText)
-   if(result['status']!= 'ok'){
-   alert("Fehler bei der Verbindung")
-   }
-   },"application/json")
-
-   }, */
+  cameraFail:function(err){
+    alert("Fehler bei Kamera: "+err)
+  },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     var parentElement = document.getElementById(id);
