@@ -8,6 +8,12 @@ var app = {
   usernameField: "ch.webelexis.foto.username",
   passwordField: "ch.webelexis.foto.password",
   urlField: "ch.webelexis.foto.url",
+  selectedPatient:{
+    lastname: "Testperson",
+    firstname:"Armeswesen",
+    birthdate: "01.02.1960",
+    id:"3f4d-4efr-1433-1234"
+  },
 
 // Initilize our app when the device is ready
   initialize: function () {
@@ -49,12 +55,13 @@ var app = {
     var url = localStorage.getItem(app.urlField)
     var uname = localStorage.getItem(app.usernameField)
     var pwd = localStorage.getItem(app.passwordField)
+
     $.ajax({
       type: "POST",
       url: url,
       dataType: "json",
       async: false,
-      data: {user: uname, pwd: pwd, payload: data},
+      data: {user: uname, pwd: pwd, patient: selectedPatient, payload: data},
       success: function (val) {
         alert("success")
       },
