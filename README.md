@@ -6,7 +6,7 @@ This is a very simple cordova App which runs on Android and iOS Devices. We use 
 
 ## Prerequisites and Setup
 
-The phone must be in the same WLAN as the Janus Server. Enter settings accordingly. The just hit "Photo aufnehmen" and the mobile lets you take a photo and transmits it immediately to the server.
+The phone must be in the same WLAN as the Janus Server. Enter settings accordingly. Then just hit "Photo aufnehmen" and the mobile lets you take a photo and transmits it immediately to the server.
 
 ![Front](webelexis-foto-1.png) 
 ![back](webelexis-foto-2.png)
