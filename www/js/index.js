@@ -38,9 +38,7 @@ var app = {
       })
     })
     $(document).on("pagebeforeshow", "#einstellungen", function () {
-      alert(app.urlField)
       var surl = localStorage.getItem(app.urlField)
-      alert(surl)
       if (surl == 'null' || surl == null) {
         surl = "pa"
       }
@@ -64,9 +62,9 @@ var app = {
     $.ajax({
       type: "POST",
       url: url,
-      datyType: "json",
+      dataType: "json",
       async: false,
-      data: "{user:uname,pwd:pwd,payload:data}",
+      data: {user:uname,pwd:pwd,payload:data},
       success: function (val) {
         alert("success")
       },
