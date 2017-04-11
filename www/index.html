@@ -35,15 +35,17 @@
       Text</a>
   </div>
   <div role="main" class="ui-content">
-    <img src="img/webelexis.png" style="display:block;margin-left:auto;margin-right: auto;">
+    <p id="selectedPatient">Kein Patient ausgewählt</p>
     <form class="ui-filterable">
-      <input id="autocomplete-input" data-type="search" placeholder="Name oder Vorname">
+      <input id="patlist-input" data-type="search" placeholder="Name oder Vorname">
     </form>
-    <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
+    <ul id="patlist" data-role="listview" data-inset="true" data-filter="true" data-input="#patlist-input"></ul>
+    <img src="img/webelexis.png" style="display:block;margin-left:auto;margin-right: auto;">
+
   </div>
 
   <div data-role="footer" data-position="fixed">
-    <button class="ui-btn ui-icon-camera ui-btn-icon-left" id="aquire">
+    <button class="ui-btn ui-icon-camera ui-btn-icon-left ui-btn-corner-all" id="aquire" style="width:100%;">
       Bild aufnehmen
     </button>
   </div>

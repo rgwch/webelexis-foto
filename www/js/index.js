@@ -12,12 +12,12 @@ var app = {
 
 // Initilize our app when the device is ready
   initialize: function () {
-    document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    document.addEventListener('deviceready',this.onDeviceReady)
   },
 
   // Here, the device is ready
   onDeviceReady: function () {
-    this.receivedEvent('deviceready');
+    //this.receivedEvent('deviceready');
 
     // bind the camera to the "Photo aufnehmen" button. We aquire the picture as BASE64
     $('#aquire').click(function () {
@@ -38,8 +38,8 @@ var app = {
       $("#server_pwd").val(localStorage.getItem(app.passwordField))
     });
 
-    // autocomplete search box with patient data
-    $("#autocomplete").on("filterablebeforefilter", function (e, data) {
+    // search box with patient data
+    $("#patlist").on("filterablebeforefilter", function (e, data) {
       var $ul = $(this),
           $input = $(data.input),
           value = $input.val(),
@@ -66,7 +66,8 @@ var app = {
               $ul.listview("refresh");
               $('.patselect').click(function(item){
                 app.selectedPatient=item.currentTarget.childNodes[0].data
-                alert("Selected "+app.selectedPatient)
+                $('#patlist').empty()
+                $('#selectedPatient').text(app.selectedPatient)
               })
               $ul.trigger("updatelayout");
             })
@@ -108,12 +109,8 @@ var app = {
     alert("Fehler bei Kamera: " + err)
   },
 
-  // Update DOM on a Received Event
-  receivedEvent: function (id) {
-    var parentElement = document.getElementById(id);
-    console.log('Received Event: ' + id);
-  },
 
+  // Extract name, firstname and bithdate from FHIR-Entry
   getPersonalia: function(patEntry){
     var rsc=patEntry['resource']
     var lastname="unbekannt"
