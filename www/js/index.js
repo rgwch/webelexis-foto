@@ -29,6 +29,8 @@ var app = {
       navigator.camera.getPicture(app.saveData, app.cameraFail, {destinationType: Camera.DestinationType.DATA_URL})
     })
 
+    $('#searchbtn').click(app.findPatient)
+
     // When the user clicks on "Settings" prefill the input fields with data from localStorage
     $(document).on("pagebeforeshow", "#einstellungen", function () {
       var surl = localStorage.getItem(app.urlField)
@@ -52,7 +54,7 @@ var app = {
 
   // After camera is finished, POST the picture to the server's REST interface
   saveData: function (data) {
-    var url = localStorage.getItem(app.urlField)
+    var url = localStorage.getItem(app.urlField)+"/addContent/image"
     var uname = localStorage.getItem(app.usernameField)
     var pwd = localStorage.getItem(app.passwordField)
 
@@ -80,6 +82,23 @@ var app = {
   receivedEvent: function (id) {
     var parentElement = document.getElementById(id);
     console.log('Received Event: ' + id);
+  },
+
+  findPatient: function(){
+    var pattern=$('#patname').val()
+    var url=localStorage.getItem(app.urlField)+"/fhir/Patient?name="+pattern
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: "json",
+      async: false,
+      success: function(val){
+        alert("success")
+      },
+      error: function(err){
+        alert("Error: "+JSON.stringify(err))
+      }
+    })
   }
 };
 
