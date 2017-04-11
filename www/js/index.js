@@ -93,6 +93,10 @@ var app = {
       dataType: "json",
       async: false,
       success: function(val){
+        var entries=val.entry
+        if(entries && entries.length>0){
+
+        }
         alert("success")
       },
       error: function(err){
