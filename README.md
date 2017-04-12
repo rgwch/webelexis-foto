@@ -8,9 +8,11 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
 
 * The build process is NodeJS-based. So you'll need a running NodeJS v.7.0 or later.
 
-* To build the Android app, you need the Android [SDK](https://developer.android.com/studio/index.html). (Just for building this app, the SDK is sufficiant, but Google will push you towards downloading the whole Android Studio. It doesn't really matter, but with the SDK alone, you should really love the command line, since you must install all parts maniually.
+* To build the Android app, you need the Android [SDK](https://developer.android.com/studio/index.html), available for Linux, Mac and Windows computers. (Just for building this app, the SDK is sufficiant, but Google will push you towards downloading the whole Android Studio. It doesn't really matter, but with the SDK alone, you should really love the command line, since you must install all parts maniually.
 
 * To build the iOS app, you need a Mac with XCode installed. 
+
+* To build the windows phone app, you need a Windows 8.1 or 10 PC with VisualStudio installed.
 
 * Webelexis-Foto needs a [Janus-Server](https://github.com/rgwch/webelexis/tree/develop/Janus) v 0.3.0 or later to communicate.
 
