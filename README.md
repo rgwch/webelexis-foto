@@ -24,7 +24,7 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
     cordova platform add android
     cordova build android
     
-## Run and install
+## Run and install development version
     
     # To run on an ADT Emulator
     cordova emulate android
@@ -32,9 +32,26 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
     #To install and run on a physically attached device
     cordova run android
 
-## Install without adt
+## Build and install release version
 
-There are quite a few possibilities to install the program to a mobile device. Probably the easiest way is, to put the .apk file on a server (locally or somewhere else) and then point your mobile's browser to that location. The phone will ask you, if you want to install (Of course, this works only, if you have "install from unsecure sources" enabled on the phone). Say "yes" amd you're done.
+To build and sign a release version, you'll need an Android developer key. We assume such
+  a key named 'developer' in 'android-keystore' here.
+
+    cordova build --release android
+    cd platforms/android/build/outputs/apk/
+    # sign the .apk with your android developer key
+    jarsigner -verbose -keystore android-keystore android-release-unsigned.apk developer
+    # Optimize the app with the zipalign tool (found in the Android developer Tools)
+    zipalign 4 android-release-unsigned.apk webelexis-foto.apk
+
+To deploy the app on an android device, transfer it using a USB connection, or run a temporary server, e.g.
+
+    php -S 192.168.0.14:10000
+
+And use your mobile's browser to navigate to `http://192.168.0.14:10000/webelexis-foto.apk`. The mobile will then download the app
+   and ask, if you would like to install it. (Of course, this works only, if you have "install from unsecure sources" enabled on the phone).
+   Say "yes" and you're done. (Instead of `192.168.0.14` you'll enter the real address of your computer, of course).
+
 
 ## Operation
 

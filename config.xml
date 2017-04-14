@@ -20,13 +20,15 @@
     <allow-navigation href="http://*/*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <preference name="android-minSdkVersion" value="14" />
     </platform>
     <platform name="ios">
-        <allow-intent href="itms:*" />
+        <allow-intent href="itms:*" />   <engine name="android" spec="~4.0.2" />
         <allow-intent href="itms-apps:*" />
     </platform>
     <plugin name="cordova-plugin-camera" spec="~2.4.0">
         <variable name="CAMERA_USAGE_DESCRIPTION" value="Webelexis Foto" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Webelexis Foto" />
     </plugin>
+
 </widget>
