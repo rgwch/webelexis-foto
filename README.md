@@ -16,7 +16,7 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
 
 * To build the windows phone app, you need a Windows 8.1 or 10 PC with VisualStudio installed.
 
-* Webelexis-Foto needs a [Janus-Server](https://github.com/rgwch/webelexis/tree/develop/Janus) v 0.3.0 or later to communicate.
+* Webelexis-Foto needs a [Janus-Server](https://github.com/rgwch/webelexis/tree/develop/Janus) v 0.3.0 or later to communicate (part of [webelexis](https://github.com/rgwch/webelexis) 2.0.3 and later).
 
 ## Build
 
