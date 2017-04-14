@@ -8,7 +8,7 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
 
 * The build process is NodeJS-based. So you'll need a running NodeJS v.7.0 or later.
 
-* To build the Android app, you need the Android [SDK](https://developer.android.com/studio/index.html), available for Linux, Mac and Windows computers. (Just for building this app, the SDK is sufficiant, but Google will push you towards downloading the whole Android Studio. It doesn't really matter, but with the SDK alone, you should really love the command line, since you must install all parts maniually.
+* To build the Android app, you need the Android [SDK](https://developer.android.com/studio/index.html), available for Linux, Mac and Windows computers. (Just for building this app, the SDK is sufficiant, but Google will push you towards downloading the whole Android Studio. It doesn't really matter, but with the SDK alone, you should really love the command line, since you must install all parts manually.
 
 * To build the iOS app, you need a Mac with XCode installed. 
 
@@ -23,14 +23,22 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
     sudo npm install -g cordova
     cordova platform add android
     cordova build android
+    
+## Run and install
+    
+    # To run on an ADT Emulator
+    cordova emulate android
+    
+    #To install and run on a physically attached device
+    cordova run android
 
-## Install
+## Install without adt
 
-There are quite a few possibilities to install the program to your phone. Probably the easiest way is, to run a temporary web server on your development machine and point your mobile to the newly created .apk file. The phone will ask you, if you want to install (Of course, this works only, if you have "install from unsecure sources" enabled on the phone). Say "yes" amd you're done.
+There are quite a few possibilities to install the program to a mobile device. Probably the easiest way is, to put the .apk file on a server (locally or somewhere else) and then point your mobile's browser to that location. The phone will ask you, if you want to install (Of course, this works only, if you have "install from unsecure sources" enabled on the phone). Say "yes" amd you're done.
 
 ## Operation
 
-The phone must be in the same WLAN as the Janus Server. Enter settings accordingly. Then just hit "Bild aufnehmen" and the mobile lets you take a photo and transmits it immediately to the server.
+The phone must be in the same WLAN as the Janus Server. Enter settings accordingly. Enter some letters of the patient's first- or lastname and select the matching entry from the list. Then just hit "Bild aufnehmen" and the mobile lets you take a photo and transmits it immediately to the Elexis document manager of the selected patient..
 
 ![Front](webelexis-foto-1.png) 
 ![back](webelexis-foto-2.png)
