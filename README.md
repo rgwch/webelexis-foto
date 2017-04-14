@@ -1,6 +1,8 @@
 # webelexis-foto
 
-Take a picture with a mobile device and send it to [Webelexis/Janus](https://github.com/rgwch/webelexis).
+Take a picture with a mobile device and send it to [Webelexis/Janus](https://github.com/rgwch/webelexis). Here's a short (<1 min) [Screencast](http://www.screencast.com/t/jvZDVfQz2XF)
+ to show the concept.
+
 
 This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which runs on Android and iOS Devices. We use it to take pictures of moles and other skin manifestations to monitor changes over time.
 
@@ -60,7 +62,6 @@ The phone must be in the same WLAN as the Janus Server. Enter settings according
 ![Front](webelexis-foto-1.png) 
 ![back](webelexis-foto-2.png)
 
-A short [Screencast](http://www.screencast.com/t/jvZDVfQz2XF) shows the concept.
 
 ## Limitations
 
