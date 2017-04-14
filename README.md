@@ -31,7 +31,8 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
     # To run on an ADT Emulator
     cordova emulate android
     
-    #To install and run on a physically attached device
+    # To install and run on a physically attached device
+    # This will work only, if "Developer options -> USB Debugging" on the mobile is switched on 
     cordova run android
 
 ## Build and install release version
