@@ -68,5 +68,5 @@ The phone must be in the same WLAN as the Janus Server. Enter settings according
 Today's mobile devices have increasingly high resolution image sensors (not always with accordingly increasing quality, though). Webelexis accepts data uploads up to 10 MB size this time. Larger data result in an "413" Error (Request entity too large).
 If you want increase this, change the limit of bodyParser in Webelexis' "app.js". I think, however, it's better to reduce the image size.
 
-(Note that a large photo will also consume a significant amount of time to transfer via WLAN to the Elexis-Server. Wait for the "OK" message on the mobile's screen before attempting to send more photos.
+(Note that a large photo will also consume a significant amount of time to transfer via WLAN to the Elexis-Server. Wait for the "OK" message on the mobile's screen before attempting to send more photos.)
 
