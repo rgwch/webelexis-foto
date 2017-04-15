@@ -37,11 +37,11 @@ This is a very simple [Cordova/PhoneGap](https://cordova.apache.org/) app which 
     
 ## Debug on emulator or attached device
 
-    # You need a recent version of Chrome
-    # Oben Developer Tools( STRG-ALT-I (Linux, Windows) or CMD-ALT-I (Mac)
-    # In dev tools, click the Menu, more tools -> remote devices
-    # let Chrome discover your running devices (emulated or physical)
-    # There you go. Debug remote apps the same way as locally running web apps.
+* You need a recent version of Chrome
+* Oben Developer Tools (STRG-ALT-I (Linux, Windows) or CMD-ALT-I (Mac))
+* In dev tools, click the Menu, more tools -> remote devices
+* let Chrome discover your running devices (emulated or physical)
+* There you go. Debug remote apps the same way as locally running web apps.
 
 ## Build and install release version
 
